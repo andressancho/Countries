@@ -50,9 +50,7 @@ class CountryListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "countryTableViewCell", for: indexPath) as? CountryTableViewCell else {
-            fatalError("countryTableViewCell is not the cell identifier or Cell is not CountryTableViewCell")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "countryTableViewCell", for: indexPath) as! CountryTableViewCell
         
         let country = countryListViewModel.object(atIndexPath: indexPath)
         

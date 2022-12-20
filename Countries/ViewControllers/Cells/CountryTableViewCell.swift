@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImageSVGCoder
+import SDWebImage
 
 class CountryTableViewCell: UITableViewCell {
 
@@ -21,9 +21,6 @@ class CountryTableViewCell: UITableViewCell {
 
     func setupCell(name: String, flagUrl: URL?) {
         countryNameLabel.text = name
-        
-        let SVGCoder = SDImageSVGCoder.shared
-        SDImageCodersManager.shared.addCoder(SVGCoder)
         
         countryFlag.sd_setImage(with: flagUrl)
         

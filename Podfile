@@ -7,7 +7,7 @@ target 'Countries' do
 
   # Pods for Countries
   pod 'Moya', '~> 15.0'
-  pod 'SDWebImageSVGCoder'
+  pod 'SDWebImage'
 
   target 'CountriesTests' do
     inherit! :search_paths
