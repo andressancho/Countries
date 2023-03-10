@@ -8,6 +8,7 @@ target 'Countries' do
   # Pods for Countries
   pod 'Moya', '~> 15.0'
   pod 'SDWebImage'
+  pod 'Google-Mobile-Ads-SDK'
 
   target 'CountriesTests' do
     inherit! :search_paths
