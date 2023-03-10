@@ -31,7 +31,7 @@ class CountriesListViewModel: BaseListViewModel<Country> {
     }
     
     func randomCountry() -> Country {
-        let random = Int.random(in: 0 ... self.currentData.count)
+        let random = Int.random(in: 0 ... self.currentData.count-1)
         return self.currentData[random]
     }
 }

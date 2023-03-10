@@ -21,7 +21,7 @@ enum CountryApi {
 
 extension CountryApi: TargetType {
     var baseURL: URL {
-        if let url = URL(string: "https://restcountries.com/v2/") {
+        if let url = URL(string: "https://restcountries.com/v3.1/") {
             return url
         }
         fatalError("country api url issue")

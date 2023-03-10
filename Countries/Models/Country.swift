@@ -10,11 +10,10 @@ import Foundation
 struct Country: Codable {
     var name: String?
     var flag: String?
-    var capital: String?
+    var capital: [String]?
     var code: String?
     var continent: String?
     var population: Int?
-    var demonym: String?
     var spanishName: String?
     var independent: Bool?
     
@@ -29,38 +28,43 @@ extension Country {
         case name
         case flag = "flags"
         case capital
-        case code = "alpha3Code"
+        case code = "cca3"
         case continet = "region"
         case population
-        case demonym
-        case spanishName = "translations"
+        case translations 
         case independent
     }
     
     enum FlagKeys: String, CodingKey {
-        case flag = "png"
+        case png
+    }
+    
+    enum NameKeys: String, CodingKey {
+        case common
     }
     
     enum TranslationKeys: String, CodingKey {
-        case spanishName = "es"
+        case spanishName = "spa"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: keys.self)
-        name = try container.decode(String.self, forKey: .name)
-        capital = try container.decodeIfPresent(String.self, forKey: .capital)
+        capital = try container.decodeIfPresent([String].self, forKey: .capital)
         code = try container.decode(String.self, forKey: .code)
         continent = try container.decode(String.self, forKey: .continet)
         population = try container.decode(Int.self, forKey: .population)
-        demonym = try container.decode(String.self, forKey: .demonym)
-        independent = try container.decode(Bool.self, forKey: .independent)
+        independent = try container.decodeIfPresent(Bool.self, forKey: .independent) ?? false
         
+        let nameContainer = try container.nestedContainer(keyedBy: NameKeys.self, forKey: .name)
+        name = try nameContainer.decode(String.self, forKey: .common)
         
         let flagContainer = try container.nestedContainer(keyedBy: FlagKeys.self, forKey: .flag)
-        flag = try flagContainer.decode(String.self, forKey: .flag)
+        flag = try flagContainer.decode(String.self, forKey: .png)
         
-        let translationContainer = try container.nestedContainer(keyedBy: TranslationKeys.self, forKey: .spanishName)
-        spanishName = try translationContainer.decode(String.self, forKey: .spanishName)
+        let translationContainer = try container.nestedContainer(keyedBy: TranslationKeys.self, forKey: .translations)
+        let spanishContainer = try translationContainer.nestedContainer(keyedBy: NameKeys.self, forKey: .spanishName)
+        spanishName = try spanishContainer.decode(String.self, forKey: .common)
+        
     }
     
     
