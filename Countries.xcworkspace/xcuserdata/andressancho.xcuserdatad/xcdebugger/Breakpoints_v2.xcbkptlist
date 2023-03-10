@@ -23,22 +23,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F67E4697-4564-44FB-8939-D993D497DF8B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Countries/Models/Country.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "init(from:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "8E8FA051-AD5C-4757-98E4-12F6C311D638"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -71,16 +55,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "99C4F788-2522-45C2-ABFC-23243A752BC7"
-            shouldBeEnabled = "No"
+            uuid = "E3CAD990-BD82-42E8-8D72-74D7A35A991A"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Countries/Models/Country.swift"
+            filePath = "Pods/Moya/Sources/Moya/Response.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "init(from:)"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "map(_:atKeyPath:using:failsOnEmptyData:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

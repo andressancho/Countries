@@ -54,7 +54,7 @@ class CountryListTableViewController: UITableViewController {
         
         let country = countryListViewModel.object(atIndexPath: indexPath)
         
-        cell.setupCell(name: country.name, flagUrl: URL(string: country.flag))
+        cell.setupCell(name: country.name!, flagUrl: URL(string: country.flag!))
         return cell
     }
     

@@ -14,7 +14,13 @@ class CountriesListViewModel: BaseListViewModel<Country> {
         CountryApiProvider.request(.getCountries, completion: { result in
             do {
                 let response = try result.get()
-                self.currentData = try response.map([Country].self)
+                let countries = try response.map([Country].self)
+                for country in countries {
+                    if(country.independent!){
+                        self.currentData.append(country)
+                    }
+                        
+                }
                 self.state = .success
                 self.state = .idle
             } catch {

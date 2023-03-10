@@ -30,7 +30,7 @@ class GuessCountryViewController: UIViewController {
             switch(newState){
             case .success:
                 let country = self?.countryListViewModel.randomCountry()
-                self?.flagImageView.sd_setImage(with: URL(string: country!.flag))
+                self?.flagImageView.sd_setImage(with: URL(string: country!.flag!))
                 self?.countryNameLabel.text = country?.name
                 break
             case .idle:
@@ -52,7 +52,7 @@ class GuessCountryViewController: UIViewController {
     
     @IBAction func nextButtonPressed(_ sender: Any) {
         let country = countryListViewModel.randomCountry()
-        flagImageView.sd_setImage(with: URL(string: country.flag))
+        flagImageView.sd_setImage(with: URL(string: country.flag!))
         countryNameLabel.text = country.name
         if(!countryNameLabel.isHidden){
             countryNameLabel.isHidden = true;
