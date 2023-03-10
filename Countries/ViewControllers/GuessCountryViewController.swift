@@ -8,8 +8,11 @@
 import UIKit
 import Combine
 import SDWebImage
+import GoogleMobileAds
 
 class GuessCountryViewController: UIViewController {
+    
+    var bannerView: GADBannerView!
 
     @IBOutlet weak var flagImageView: UIImageView!
     @IBOutlet weak var nextButton: UIButton!
@@ -20,9 +23,38 @@ class GuessCountryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
+        
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+
+        addBannerViewToView(bannerView)
+        bannerView.load(GADRequest())
+        
         suscribeSignals()
         countryListViewModel.getData()
     }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+          [NSLayoutConstraint(item: bannerView,
+                              attribute: .top,
+                              relatedBy: .equal,
+                              toItem: view.safeAreaLayoutGuide,
+                              attribute: .top,
+                              multiplier: 1,
+                              constant: 0),
+           NSLayoutConstraint(item: bannerView,
+                              attribute: .centerX,
+                              relatedBy: .equal,
+                              toItem: view,
+                              attribute: .centerX,
+                              multiplier: 1,
+                              constant: 0)
+          ])
+       }
     
     func suscribeSignals() {
         countryListViewModel.$state.sink(receiveValue: { [weak self] newState in
